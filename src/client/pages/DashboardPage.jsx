@@ -14,8 +14,8 @@ export function DashboardPage() {
   const [nightSleepEnd, setNightSleepEnd] = useState('');
   const [napStart, setNapStart] = useState('');
   const [napEnd, setNapEnd] = useState('');
-  const [selectedStartDate, setSelectedStartDate] = useState(new Date());
-  const [selectedEndDate, setSelectedEndDate] = useState(new Date());
+  const [selectedStartDate, setSelectedStartDate] = useState();
+  const [selectedEndDate, setSelectedEndDate] = useState();
   const [logs, setLogs] = useState([])
 
   const { data: sleepLogs, isLoading: sleepLogsLoading } = useQuery(getSleepLogs);
@@ -62,11 +62,9 @@ export function DashboardPage() {
     <div className='p-4'>
       <div className='mb-4'>
         <h2 className='text-xl font-bold mb-2'>Night Sleep</h2>
-        <span>
-          start sleep: {nightSleepStart} | end sleep: {nightSleepEnd}{' '}
-        </span>
-        <div className='flex flex-col items-start gap-2' style={{ position: 'relative' }}>
+        <div className='relatiev flex justify-start items-start gap-2'>
           <DatePicker
+            placeholderText="select time"
             selected={selectedStartDate}
             onChange={(date) => setSelectedStartDate(date)}
             showTimeSelect
@@ -75,9 +73,10 @@ export function DashboardPage() {
             timeIntervals={15}
             timeCaption='time'
             dateFormat='MMMM d, yyyy h:mm aa'
-            className='border rounded focus:outline-none py-2 px-3 mb-2'
+            className='border rounded focus:outline-none py-2 px-3'
           />
           <DatePicker
+            placeholderText="select time"
             selected={selectedEndDate}
             onChange={(date) => setSelectedEndDate(date)}
             showTimeSelect
@@ -98,21 +97,23 @@ export function DashboardPage() {
       </div>
       <div>
         <h2 className='text-xl font-bold mb-2'>Nap</h2>
-        <div className='flex flex-col items-start gap-2' style={{ position: 'relative' }}>
+        <div className='relatiev flex justify-start items-start gap-2'>
           <DatePicker
-            selected={selectedStartDate}
-            onChange={(date) => setSelectedStartDate(date)}
+            placeholderText="select time"
+            // selected={selectedStartDate}
+            // onChange={(date) => setSelectedStartDate(date)}
             showTimeSelect
-            portalId='root-portal'
+            // portalId='root-portal'
             timeFormat='HH:mm'
             timeIntervals={15}
             timeCaption='time'
             dateFormat='MMMM d, yyyy h:mm aa'
-            className='border rounded py-2 px-3 mb-2'
+            className='border rounded py-2 px-3 '
           />
           <DatePicker
-            selected={selectedEndDate}
-            onChange={(date) => setSelectedEndDate(date)}
+            placeholderText="select time"
+            // selected={selectedEndDate}
+            // onChange={(date) => setSelectedEndDate(date)}
             showTimeSelect
             timeFormat='HH:mm'
             position='top'
