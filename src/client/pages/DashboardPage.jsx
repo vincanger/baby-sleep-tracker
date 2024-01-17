@@ -38,7 +38,8 @@ export function DashboardPage() {
   };
 
   useEffect(() => {
-    if (sleepLogs) {
+    if (!sleepLogsLoading && sleepLogs?.length > 0) {
+      console.log(sleepLogs)
       const logs = sleepLogs.map((log) => {
         log.startTime = new Date(log.startTime).toLocaleTimeString();
 
@@ -47,7 +48,7 @@ export function DashboardPage() {
         // convert to a.m. or p.m. format
         log.endTime = log.endTime.replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, '$1$3');
         // covert start time to dd/mm and remove yyyy format
-        console.log(log.startDate);
+        // console.log(log.startDate);
         // get Wed Jan 17 from log.startDate
         log.startDate = log.startDate.toDateString().slice(0, 10);
         return log;
@@ -64,36 +65,29 @@ export function DashboardPage() {
         <span>
           start sleep: {nightSleepStart} | end sleep: {nightSleepEnd}{' '}
         </span>
-        <div>
+        <div className='flex flex-col items-start gap-2'>
           <DatePicker
             selected={selectedStartDate}
             onChange={(date) => setSelectedStartDate(date)}
             showTimeSelect
-            timeFormat="HH:mm"
+            timeFormat='HH:mm'
             timeIntervals={15}
-            timeCaption="time"
-            dateFormat="MMMM d, yyyy h:mm aa"
-            className='border rounded py-2 px-3 mb-2'
+            timeCaption='time'
+            dateFormat='MMMM d, yyyy h:mm aa'
+            className='border rounded focus:outline-none py-2 px-3 mb-2'
           />
           <DatePicker
             selected={selectedEndDate}
             onChange={(date) => setSelectedEndDate(date)}
             showTimeSelect
-            timeFormat="HH:mm"
+            timeFormat='HH:mm'
             timeIntervals={15}
-            timeCaption="time"
-            dateFormat="MMMM d, yyyy h:mm aa"
+            timeCaption='time'
+            dateFormat='MMMM d, yyyy h:mm aa'
             className='border rounded py-2 px-3'
-          />
-          <span className='mx-2'>to</span>
-          <input
-            type='time'
-            className='border rounded py-2 px-3'
-            value={nightSleepEnd}
-            onChange={(e) => setNightSleepEnd(e.target.value)}
           />
           <button
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-3'
+            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
             onClick={handleSubmitNightSleep}
           >
             Log Sleep
@@ -102,36 +96,31 @@ export function DashboardPage() {
       </div>
       <div>
         <h2 className='text-xl font-bold mb-2'>Nap</h2>
-        <div>
+        <div className='flex flex-col items-start gap-2'>
           <DatePicker
             selected={selectedStartDate}
             onChange={(date) => setSelectedStartDate(date)}
             showTimeSelect
-            timeFormat="HH:mm"
+            portalId='root-portal'
+            timeFormat='HH:mm'
             timeIntervals={15}
-            timeCaption="time"
-            dateFormat="MMMM d, yyyy h:mm aa"
+            timeCaption='time'
+            dateFormat='MMMM d, yyyy h:mm aa'
             className='border rounded py-2 px-3 mb-2'
           />
           <DatePicker
             selected={selectedEndDate}
             onChange={(date) => setSelectedEndDate(date)}
             showTimeSelect
-            timeFormat="HH:mm"
+            timeFormat='HH:mm'
+            position='top'
             timeIntervals={15}
-            timeCaption="time"
-            dateFormat="MMMM d, yyyy h:mm aa"
+            timeCaption='time'
+            dateFormat='MMMM d, yyyy h:mm aa'
             className='border rounded py-2 px-3'
-          />
-          <span className='mx-2'>to</span>
-          <input
-            type='time'
-            className='border rounded py-2 px-3'
-            value={napEnd}
-            onChange={(e) => setNapEnd(e.target.value)}
           />
           <button
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-3'
+            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
             onClick={handleSubmitNap}
           >
             Log Nap
