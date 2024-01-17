@@ -95,28 +95,24 @@ export function DashboardPage() {
         <h2 className='text-xl font-bold mb-2'>Nap</h2>
         <div className='relatiev flex justify-start items-start gap-2'>
           <DatePicker
-            placeholderText="select time"
-            // selected={selectedStartDate}
-            // onChange={(date) => setSelectedStartDate(date)}
+            selected={napStart}
+            onChange={(date) => setNapStart(date)}
             showTimeSelect
-            // portalId='root-portal'
             timeFormat='HH:mm'
             timeIntervals={15}
-            timeCaption='time'
+            timeCaption='Time'
             dateFormat='MMMM d, yyyy h:mm aa'
-            className='border rounded py-2 px-3 '
+            className='border rounded focus:outline-none py-2 px-3'
           />
           <DatePicker
-            placeholderText="select time"
-            // selected={selectedEndDate}
-            // onChange={(date) => setSelectedEndDate(date)}
+            selected={napEnd}
+            onChange={(date) => setNapEnd(date)}
             showTimeSelect
             timeFormat='HH:mm'
-            position='top'
             timeIntervals={15}
-            timeCaption='time'
+            timeCaption='Time'
             dateFormat='MMMM d, yyyy h:mm aa'
-            className='border rounded py-2 px-3'
+            className='border rounded focus:outline-none py-2 px-3'
           />
           <button
             className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
