@@ -65,7 +65,7 @@ export function DashboardPage() {
         <span>
           start sleep: {nightSleepStart} | end sleep: {nightSleepEnd}{' '}
         </span>
-        <div className='flex flex-col items-start gap-2'>
+        <div className='flex flex-col items-start gap-2' style={{ position: 'relative' }}>
           <DatePicker
             selected={selectedStartDate}
             onChange={(date) => setSelectedStartDate(date)}
@@ -96,7 +96,7 @@ export function DashboardPage() {
       </div>
       <div>
         <h2 className='text-xl font-bold mb-2'>Nap</h2>
-        <div className='flex flex-col items-start gap-2'>
+        <div className='flex flex-col items-start gap-2' style={{ position: 'relative' }}>
           <DatePicker
             selected={selectedStartDate}
             onChange={(date) => setSelectedStartDate(date)}
