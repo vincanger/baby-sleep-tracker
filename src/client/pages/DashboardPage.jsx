@@ -64,8 +64,8 @@ export function DashboardPage() {
         <h2 className='text-xl font-bold mb-2'>Night Sleep</h2>
         <div className='relatiev flex justify-start items-start gap-2'>
           <DatePicker
-            selected={selectedStartDate}
-            onChange={(date) => setSelectedStartDate(date)}
+            selected={nightSleepStart}
+            onChange={(date) => setNightSleepStart(date)}
             showTimeSelect
             timeFormat='HH:mm'
             timeIntervals={15}
@@ -74,8 +74,8 @@ export function DashboardPage() {
             className='border rounded focus:outline-none py-2 px-3'
           />
           <DatePicker
-            selected={selectedEndDate}
-            onChange={(date) => setSelectedEndDate(date)}
+            selected={nightSleepEnd}
+            onChange={(date) => setNightSleepEnd(date)}
             showTimeSelect
             timeFormat='HH:mm'
             timeIntervals={15}
