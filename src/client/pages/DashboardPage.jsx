@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import { useQuery } from '@wasp/queries';
 import { useAction } from '@wasp/actions';
 import startSleep from '@wasp/actions/startSleep';
@@ -12,6 +14,7 @@ export function DashboardPage() {
   const [nightSleepEnd, setNightSleepEnd] = useState('');
   const [napStart, setNapStart] = useState('');
   const [napEnd, setNapEnd] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date());
   const [logs, setLogs] = useState([])
 
   const { data: sleepLogs, isLoading: sleepLogsLoading } = useQuery(getSleepLogs);
@@ -61,11 +64,14 @@ export function DashboardPage() {
           start sleep: {nightSleepStart} | end sleep: {nightSleepEnd}{' '}
         </span>
         <div>
-          <input
-            type='time'
-            className='border rounded py-2 px-3'
-            value={nightSleepStart}
-            onChange={(e) => setNightSleepStart(e.target.value)}
+          <DatePicker
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            timeCaption="time"
+            dateFormat="MMMM d, yyyy h:mm aa"
           />
           <span className='mx-2'>to</span>
           <input
@@ -85,11 +91,14 @@ export function DashboardPage() {
       <div>
         <h2 className='text-xl font-bold mb-2'>Nap</h2>
         <div>
-          <input
-            type='time'
-            className='border rounded py-2 px-3'
-            value={napStart}
-            onChange={(e) => setNapStart(e.target.value)}
+          <DatePicker
+            selected={selectedDate}
+            onChange={(date) => setSelectedDate(date)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            timeCaption="time"
+            dateFormat="MMMM d, yyyy h:mm aa"
           />
           <span className='mx-2'>to</span>
           <input
