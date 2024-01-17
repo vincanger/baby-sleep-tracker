@@ -70,6 +70,7 @@ export function DashboardPage() {
             selected={selectedStartDate}
             onChange={(date) => setSelectedStartDate(date)}
             showTimeSelect
+            portalId='root-portal'
             timeFormat='HH:mm'
             timeIntervals={15}
             timeCaption='time'
@@ -80,6 +81,7 @@ export function DashboardPage() {
             selected={selectedEndDate}
             onChange={(date) => setSelectedEndDate(date)}
             showTimeSelect
+            portalId='root-portal'
             timeFormat='HH:mm'
             timeIntervals={15}
             timeCaption='time'
