@@ -67,6 +67,8 @@ export function DashboardPage() {
             selected={nightSleepStart}
             onChange={(date) => setNightSleepStart(date)}
             showTimeSelect
+            portalId='root-portal'
+            placeholderText='Sleep Start Time'
             timeFormat='HH:mm'
             timeIntervals={15}
             timeCaption='Time'
@@ -77,6 +79,8 @@ export function DashboardPage() {
             selected={nightSleepEnd}
             onChange={(date) => setNightSleepEnd(date)}
             showTimeSelect
+            portalId='two'
+            placeholderText='Sleep End Time'
             timeFormat='HH:mm'
             timeIntervals={15}
             timeCaption='Time'
@@ -98,6 +102,8 @@ export function DashboardPage() {
             selected={napStart}
             onChange={(date) => setNapStart(date)}
             showTimeSelect
+            portalId='three'
+            placeholderText='Nap Start Time'
             timeFormat='HH:mm'
             timeIntervals={15}
             timeCaption='Time'
@@ -108,6 +114,8 @@ export function DashboardPage() {
             selected={napEnd}
             onChange={(date) => setNapEnd(date)}
             showTimeSelect
+            portalId='four'
+            placeholderText='Nap End Time'
             timeFormat='HH:mm'
             timeIntervals={15}
             timeCaption='Time'
