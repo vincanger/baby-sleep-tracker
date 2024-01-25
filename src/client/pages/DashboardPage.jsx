@@ -14,6 +14,7 @@ export function DashboardPage() {
   const [nightSleepEnd, setNightSleepEnd] = useState('');
   const [napStart, setNapStart] = useState('');
   const [napEnd, setNapEnd] = useState('');
+  const [numNaps, setNumNaps] = useState(0);
   const [selectedStartDate, setSelectedStartDate] = useState();
   const [selectedEndDate, setSelectedEndDate] = useState();
   const [logs, setLogs] = useState([])
@@ -120,6 +121,13 @@ export function DashboardPage() {
             timeIntervals={15}
             timeCaption='Time'
             dateFormat='MMMM d, yyyy h:mm aa'
+            className='border rounded focus:outline-none py-2 px-3'
+          />
+          <input
+            type='number'
+            value={numNaps}
+            onChange={(e) => setNumNaps(e.target.value)}
+            placeholder='Number of Naps'
             className='border rounded focus:outline-none py-2 px-3'
           />
           <button
