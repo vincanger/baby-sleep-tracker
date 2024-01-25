@@ -32,8 +32,8 @@ export function DashboardPage() {
   };
 
   const handleSubmitNap = () => {
-    startNapAction({ startTime: napStart });
-    endNapAction({ endTime: napEnd });
+    startNapAction({ startTime: napStart, startDate: new Date(napStart), endDate: new Date(napEnd) });
+    endNapAction({ endTime: napEnd, startDate: new Date(napStart), endDate: new Date(napEnd) });
     setNapStart('');
     setNapEnd('');
   };
